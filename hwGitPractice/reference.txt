@@ -1,0 +1,9 @@
+git init 
+git status 
+git add 
+git diff 
+git commit 
+git log 
+git checkout HEAD <filename> 
+git reset HEAD <filename> 
+git reset SHA 
