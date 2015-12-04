@@ -1,9 +1,9 @@
-git init 
-git status 
-git add 
-git diff 
-git commit 
-git log 
-git checkout HEAD <filename> 
-git reset HEAD <filename> 
-git reset SHA 
+git init - creates a new git repository
+git status - inspects the contents of the working directory and staging area
+git add - adds files from the working directory to the staging area
+git diff - shows the difference between the working directory and the staging area
+git commit - permanently stores file changes from the staging area in the repository
+git log - shows a list of all previous commits
+git checkout HEAD <filename> - discards changes in the working directory
+git reset HEAD <filename> - unstages file changes in the staging area
+git reset SHA - resets to a previous commit in the commit history
