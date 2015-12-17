@@ -4,8 +4,8 @@ import java.awt.event.*;
 
 public class TempConversionWindow extends JFrame implements ActionListener{
     private Container pane;
-    private JLabel j;
     private JTextField t;
+    private JTextField t1;
 
     public TempConversionWindow() {
 	this.setTitle("Temperature Converter");
@@ -26,14 +26,12 @@ public class TempConversionWindow extends JFrame implements ActionListener{
 
 
 	t = new JTextField(1);
-	JTextfield t1 = new JTextField(1);
+        t1 = new JTextField(1);
 
-	j = new JLabel("Meaning of life is... ");
-	pane.add(t1);
+	pane.add(t);
 	pane.add(b);
 	pane.add(b2);
-	pane.add(t);
-	pane.add(j);
+	pane.add(t1);
     }
 
     public static double CtoF(double t){
@@ -45,15 +43,16 @@ public class TempConversionWindow extends JFrame implements ActionListener{
 
     public void actionPerformed(ActionEvent e){
 	String event = e.getActionCommand();
-	try(int i = Integer.parseInt(t1.getText())){
-		if(event.equals("CtoF")){
-		    t.setText(CtoF(i));
-		}
-		if(event.equals("FtoC")){
-		    t.setText(FtoC(i));
-  
-		}
-	    }catch(NumberFormatException e){
+	try{
+	    double i = Double.parseDouble(t.getText());
+	    if(event.equals("CtoF")){
+		t1.setText(Double.toString(CtoF(i)));
+	    }
+	    if(event.equals("FtoC")){
+		t1.setText(Double.toString(FtoC(i)));
+		
+	    }
+	}catch(NumberFormatException | NullPointerException ex){
 	    t.setText("Invalid input");
 	}
     }
