@@ -52,7 +52,9 @@ public class TempConversionWindow extends JFrame implements ActionListener{
 		t1.setText(Double.toString(FtoC(i)));
 		
 	    }
-	}catch(NumberFormatException | NullPointerException ex){
+	}catch(NumberFormatException ex){
+	    t.setText("Invalid input");
+	}catch(NullPointerException ex){
 	    t.setText("Invalid input");
 	}
     }
