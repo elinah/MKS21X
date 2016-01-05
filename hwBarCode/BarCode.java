@@ -43,23 +43,37 @@ public class BarCode implements Comparable{
     //postcondition: format zip + check digit + barcode 
     //ex. "084518  |||:::|::|::|::|:|:|::::|||::|:|"      
     public String toString(){
-	String retStr = "|";
+	String retStr = _zip + _checkDigit + " |";
 	for (int i=0;i<_zip.length();i++)
 	    retStr += code[Integer.parseInt(_zip.substring(i,i+1))];
-	retStr += checkSum()%10 + "|";
+	retStr += code[_checkDigit] + "|";
+	return retStr;
     }
 
 
     public boolean equals(Object other){
 	return this == other ||
-	    (other.instanceof(BarCode) && _zip.equals(((BarCode)other)._zip));
+	    (other instanceof BarCode && _zip.equals(((BarCode)other)._zip));
     }
     // postcondition: false if the object is not a BarCode, 
     // false if it is a non-matching barcode
     // true when they match.
 
 
-    //public int compareTo(Comparable other){}
+    public int compareTo(Object other){
+	return _zip.compareTo(((BarCode)other)._zip);
+    }
     // postcondition: compares the zip + checkdigit 
 
+    public static void main(String[] args){
+	BarCode a = new BarCode("54658");
+	BarCode b = new BarCode("54778");
+	BarCode c = new BarCode("54778");
+	System.out.println(a);
+	System.out.println(b);
+	System.out.println(a.equals(b));
+	System.out.println(a.compareTo(b));
+	System.out.println(b.equals(c));
+	System.out.println(c.compareTo(b));
+    }
 }
